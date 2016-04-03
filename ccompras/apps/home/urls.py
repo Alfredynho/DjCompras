@@ -5,4 +5,5 @@ urlpatterns = patterns('ccompras.apps.home.views',
 	url(r'^about/$','about_view',name='vista_about'),
 	url(r'^perfil/$','home', name='perfil'),
 	url(r'^productos/$','productos_view',name='vista_productos'),
+	url(r'^formulario/$','contacto_view',name='vista_contacto'),
 )

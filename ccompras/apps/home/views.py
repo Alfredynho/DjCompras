@@ -1,6 +1,7 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from ccompras.apps.ventas.models import producto
+from ccompras.apps.home.forms import ContactForm
 # Create your views here.
 def index_view(request):
 	return render_to_response('home/index.html',context_instance=RequestContext(request))
@@ -20,3 +21,8 @@ def productos_view(request):
 	prod = producto.objects.filter(status=True)
 	ctx = {'productos':prod}
 	return render_to_response('home/productos.html',ctx,context_instance=RequestContext(request))
+
+def contacto_view(request):
+	formulario = ContactForm()
+	ctx ={'form':formulario}
+	return render(request,'home/contacto.html',ctx)
