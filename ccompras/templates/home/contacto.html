@@ -5,10 +5,21 @@
 	<title>Formulario</title>
 </head>
 <body>
-<h1>formulario de Registro</h1>
-<form action="." method="POST">
-	{{ form.as_p }}
-<input type="submit" value="Registrar"></input>
+{% if info_enviado %}
+	Gracias por enviar tu comentario
+	<br>
+	La informacion recibida fue la siguiente</br>
+<p> Email utilizado : {{email}}
+<p>titulo utilizado es : {{ titulo }} <p>
+<p>el mensaje es : {{texto}}<p>
+
+{% else %}
+      <form action="." method="POST">
+        {% csrf_token %}
+	      {{ form.as_p }}
+	      <input type="submit" value="Registrar"></input>
+{% endif %}
+
 </form>
 </body>
 </html>
