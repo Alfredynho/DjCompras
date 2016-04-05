@@ -2,6 +2,7 @@ from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from ccompras.apps.ventas.models import producto
 from ccompras.apps.home.forms import ContactForm
+from django.core.mail import EmailMultiAlternatives
 # Create your views here.
 def index_view(request):
 	return render_to_response('home/index.html',context_instance=RequestContext(request))
@@ -34,6 +35,12 @@ def contacto_view(request):
 			email = formulario.cleaned_data['Email']
 			titulo = formulario.cleaned_data['Titulo']
 			texto = formulario.cleaned_data['Texto']
+			#configurando el envio de mensaje a Gmail
+			to_admin = 'callizayagutierrezalfredo@gmail.com'
+			html_content = "Informacion recibida de [%s] <br><br><br>***Mensaje****<br><br>%s"%(email,texto)
+			msg = EmailMultiAlternatives('Correo de Contacto',html_content,'from@server.com',[to_admin])
+			msg.attach_alternative(html_content,'text/html') # Definimos el contenido como HTML
+			msg.send() # Enviamos  en correo
 	else:
 		formulario = ContactForm()
 	ctx ={'form':formulario,'email':email,'titulo':titulo,'texto':texto,'info_enviado':info_enviado}
