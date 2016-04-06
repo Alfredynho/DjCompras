@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Formulario</title>
-</head>
+{% extends "base.html" %}
+{% block title %}Contactanos{% endblock title %}
+{% block content %}
 <body>
 {% if info_enviado %}
 	Gracias por enviar tu comentario
@@ -19,7 +16,4 @@
 	      {{ form.as_p }}
 	      <input type="submit" value="Registrar"></input>
 {% endif %}
-
-</form>
-</body>
-</html>
+ {% endblock content %}
