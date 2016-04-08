@@ -3,9 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>{%block title %} Titulo Base {% endblock %}</title>
+	{% block css %}
+	<link rel="stylesheet" type="text/css" href="/media/css/estilo.css">
+	{% endblock css %}
 </head>
 <body>
 <header>
+	<img src="/media/images/git.png" width="126" height="54">
 	<h1>Proyecto Venta de productos</h1>
 	<nav>
 		<a href="{% url "vista_principal" %}">Inicio</a>

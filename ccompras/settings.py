@@ -130,3 +130,7 @@ EMAIL_HOST_USER = 'callizayagutierrezalfredo@gmail.com'
 EMAIL_HOST_PASSWORD = '5dv4rrgq8au7'
 EMAIL_USE_TLS = True
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__),'media/'))

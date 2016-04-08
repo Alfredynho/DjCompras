@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url,patterns,include
 from django.contrib import admin
+import settings
 
 urlpatterns = [
 	url(r'^',include('ccompras.apps.home.urls')),
 	url(r'^',include('ccompras.apps.ventas.urls')),
 	url(r'^admin/', admin.site.urls),
+    url(r'^media/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT}),
 ]
